@@ -52,7 +52,7 @@ project-deployment-6b5998c565   3         3         3       21s
 ```
 
 #### Expose the port, so you can access it in tour browser ####
-*** Note this only works on Minikube ***
+_Note this only works on Minikube_
 
 
 kubectl expose deployment project-deployment --type=NodePort
@@ -94,6 +94,8 @@ Hello Kubernetes **V1**
 ```
 
 #### Build and push a version 2 to docker hub ####
+_I just changed V1 in my index.js file to v2_
+
 docker build -t project .
 
 docker tag project username/online-repo:2
