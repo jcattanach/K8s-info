@@ -1,13 +1,13 @@
-#Kubernetes Deployment#
+# Kubernetes Deployment #
 
-####Build first docker image####
+#### Build first docker image ####
 docker build -t project .
 
-####Push todocker hub####
+#### Push todocker hub ####
 docker tag project username/online-repo
 docker push username/online-repo
 
-####Create Kubernetes deployment yaml####
+#### Create Kubernetes deployment yaml ####
 
 ```
 apiVersion: extensions/v1beta1
@@ -27,13 +27,12 @@ spec:
         ports:
         - name: nodejs-port
           containerPort: 8080
-
 ```
 
-####Apply the yaml file to Kubernetes####
+#### Apply the yaml file to Kubernetes ####
 kubectl create -f deployments/deployment.yaml
 
-####Check that it worked correctly####
+#### Check that it worked correctly ####
 kubectl get pods
 ```
 NAME                                  READY   STATUS    RESTARTS   AGE
@@ -51,7 +50,7 @@ kubectl get rs
 NAME                            DESIRED   CURRENT   READY   AGE
 project-deployment-6b5998c565   3         3         3       21s
 ```
-####Build and push a version 2 to docker hub####
+#### Build and push a version 2 to docker hub ####
 docker build -t project .
 
 docker tag project username/online-repo:2
