@@ -127,7 +127,6 @@ kubectl rollout history deployment/project-deployment
  REVISION  CHANGE-CAUSE
  1         <none>
  2         <none>
- 3         <none>
  ```
 
 ### Go back to previous version ###
