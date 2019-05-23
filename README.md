@@ -141,4 +141,4 @@ curl http://192.168.99.101:32425
 Hello Kubernetes **V1**
 ```
 
-_To go back to a specific rollout you can do "kubectl rollout undo deployment/indexjs-deployment --to-revision=1"_
+_To go back to a specific rollout you can do "kubectl rollout undo deployment/project-deployment --to-revision=1"_
