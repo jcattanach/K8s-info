@@ -3,7 +3,7 @@
 #### Build first docker image ####
 docker build -t project .
 
-#### Push todocker hub ####
+#### Push to docker hub ####
 docker tag project username/online-repo
 docker push username/online-repo
 
