@@ -52,7 +52,7 @@ project-deployment-6b5998c565   3         3         3       21s
 ```
 
 #### Expose the port, so you can access it in tour browser ####
-* Note this only works on Minikube *
+*** Note this only works on Minikube ***
 
 
 kubectl expose deployment project-deployment --type=NodePort
@@ -85,7 +85,9 @@ Events:                   <none>
 
 #### Get the url, so you can view in browser ####
 minikube service project-deployment --url
+```
 http://192.168.99.101:32425
+```
 curl http://192.168.99.101:32425
 ```
 Hello Kubernetes **V1**
