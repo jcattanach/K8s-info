@@ -5,6 +5,7 @@ docker build -t project .
 
 ### Push to docker hub ###
 docker tag project username/online-repo
+
 docker push username/online-repo
 
 ### Create Kubernetes deployment yaml ###
@@ -51,8 +52,9 @@ NAME                            DESIRED   CURRENT   READY   AGE
 project-deployment-6b5998c565   3         3         3       21s
 ```
 
-### Expose the port, so you can access it in tour browser ###
+### Expose the port, so you can access it in your browser ###
 _Note this only works on Minikube_
+_otherwise it is handled in a separate yaml file or on your AWS or Google dashboard_
 
 
 kubectl expose deployment project-deployment --type=NodePort
@@ -83,7 +85,7 @@ External Traffic Policy:  Cluster
 Events:                   <none>
 ```
 
-### Get the url, so you can view in browser ###
+### Get the url, so you can check it is working with curl or in your browser ###
 minikube service project-deployment --url
 ```
 http://192.168.99.101:32425
@@ -112,3 +114,31 @@ kubectl rollout status deployments/project-deployment
 ```
  deployment "project-deployment" successfully rolled out
  ```
+
+ curl http://192.168.99.101:32425
+ ```
+ Hello Kubernetes **V2**
+ ```
+
+kubectl rollout history deployment/project-deployment
+
+```
+ deployment.extensions/project-deployment
+ REVISION  CHANGE-CAUSE
+ 1         <none>
+ 2         <none>
+ 3         <none>
+ ```
+
+### go back to previous version ###
+
+kubectl rollout undo deployment/project-deployment
+```
+deployment.extensions/project-deployment rolled back
+```
+curl http://192.168.99.101:32425
+```
+Hello Kubernetes **V1**
+```
+
+_To go back to a specific rollout you can do kubectl rollout undo deployment/indexjs-deployment --to-revision=1 _
